@@ -1,0 +1,21 @@
+﻿html, body, .custom-body {
+    height: 100%; /* Đảm bảo toàn bộ chiều cao được phủ */
+    margin: 0;
+    padding: 0;
+}
+
+.custom-body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Chiều cao tối thiểu của body là chiều cao viewport */
+}
+
+main {
+    flex-grow: 1; /* Đẩy footer xuống cuối trang */
+}
+
+.custom-footer {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+    text-align: center;
+}
