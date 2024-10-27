@@ -14,6 +14,8 @@ namespace BOOK_WEB.Models
         public string tenTacGia { set; get; }
         [Required]
         public double Gia { get; set; }
+
+        public string? moTa {  get; set; }
         public string? hinhAnh { set; get; } 
         [Required]
         public string maTheLoai {  set; get; }
