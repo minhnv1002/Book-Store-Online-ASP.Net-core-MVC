@@ -4,19 +4,16 @@ using BOOK_WEB.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace BOOK_WEB.Data.Migrations
+namespace BOOK_WEB.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241013155455_ThemBangDuLieu")]
-    partial class ThemBangDuLieu
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,42 +22,6 @@ namespace BOOK_WEB.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("BOOK_WEB.Models.Book", b =>
-                {
-                    b.Property<int>("maSach")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("maSach"));
-
-                    b.Property<double>("Gia")
-                        .HasColumnType("float");
-
-                    b.Property<string>("hinhAnh")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("maTheLoai")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("tenSach")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("tenTacGia")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("theLoaimaTheLoai")
-                        .HasColumnType("int");
-
-                    b.HasKey("maSach");
-
-                    b.HasIndex("theLoaimaTheLoai");
-
-                    b.ToTable("Sach");
-                });
-
             modelBuilder.Entity("BOOK_WEB.Models.ChiTietGioHang", b =>
                 {
                     b.Property<int>("maChiTietGioHang")
@@ -68,9 +29,6 @@ namespace BOOK_WEB.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("maChiTietGioHang"));
-
-                    b.Property<int>("BookmaSach")
-                        .HasColumnType("int");
 
                     b.Property<int>("MaGioHang")
                         .HasColumnType("int");
@@ -84,14 +42,17 @@ namespace BOOK_WEB.Data.Migrations
                     b.Property<int>("maSach")
                         .HasColumnType("int");
 
+                    b.Property<int>("sachmaSach")
+                        .HasColumnType("int");
+
                     b.Property<int>("soLuong")
                         .HasColumnType("int");
 
                     b.HasKey("maChiTietGioHang");
 
-                    b.HasIndex("BookmaSach");
-
                     b.HasIndex("gioHangmaGioHang");
+
+                    b.HasIndex("sachmaSach");
 
                     b.ToTable("ChiTietGioHang");
                 });
@@ -103,9 +64,6 @@ namespace BOOK_WEB.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("maChiTietDonHang"));
-
-                    b.Property<int>("bookmaSach")
-                        .HasColumnType("int");
 
                     b.Property<double>("donGia")
                         .HasColumnType("float");
@@ -119,14 +77,17 @@ namespace BOOK_WEB.Data.Migrations
                     b.Property<int>("maSach")
                         .HasColumnType("int");
 
+                    b.Property<int>("sachmaSach")
+                        .HasColumnType("int");
+
                     b.Property<int>("soLuong")
                         .HasColumnType("int");
 
                     b.HasKey("maChiTietDonHang");
 
-                    b.HasIndex("bookmaSach");
-
                     b.HasIndex("donHangmaDonHang");
+
+                    b.HasIndex("sachmaSach");
 
                     b.ToTable("ChitietDonHang");
                 });
@@ -181,6 +142,40 @@ namespace BOOK_WEB.Data.Migrations
                     b.HasKey("maGioHang");
 
                     b.ToTable("GiaHang");
+                });
+
+            modelBuilder.Entity("BOOK_WEB.Models.Sach", b =>
+                {
+                    b.Property<int>("maSach")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("maSach"));
+
+                    b.Property<double>("Gia")
+                        .HasColumnType("float");
+
+                    b.Property<string>("hinhAnh")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("maTheLoai")
+                        .HasColumnType("int");
+
+                    b.Property<string>("moTa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("tenSach")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("tenTacGia")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("maSach");
+
+                    b.HasIndex("maTheLoai");
+
+                    b.ToTable("Sach");
                 });
 
             modelBuilder.Entity("BOOK_WEB.Models.TheLoai", b =>
@@ -363,12 +358,10 @@ namespace BOOK_WEB.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -405,12 +398,10 @@ namespace BOOK_WEB.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -420,53 +411,42 @@ namespace BOOK_WEB.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("BOOK_WEB.Models.Book", b =>
-                {
-                    b.HasOne("BOOK_WEB.Models.TheLoai", "theLoai")
-                        .WithMany("books")
-                        .HasForeignKey("theLoaimaTheLoai")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("theLoai");
-                });
-
             modelBuilder.Entity("BOOK_WEB.Models.ChiTietGioHang", b =>
                 {
-                    b.HasOne("BOOK_WEB.Models.Book", "Book")
-                        .WithMany("chiTietGioHangs")
-                        .HasForeignKey("BookmaSach")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("BOOK_WEB.Models.GiaHang", "gioHang")
                         .WithMany("chiTietGioHangs")
                         .HasForeignKey("gioHangmaGioHang")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Book");
+                    b.HasOne("BOOK_WEB.Models.Sach", "sach")
+                        .WithMany("chiTietGioHangs")
+                        .HasForeignKey("sachmaSach")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("gioHang");
+
+                    b.Navigation("sach");
                 });
 
             modelBuilder.Entity("BOOK_WEB.Models.ChitietDonHang", b =>
                 {
-                    b.HasOne("BOOK_WEB.Models.Book", "book")
-                        .WithMany("chitietDonHang")
-                        .HasForeignKey("bookmaSach")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("BOOK_WEB.Models.DonHang", "donHang")
                         .WithMany("chitietDonHangs")
                         .HasForeignKey("donHangmaDonHang")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("book");
+                    b.HasOne("BOOK_WEB.Models.Sach", "sach")
+                        .WithMany("chitietDonHangs")
+                        .HasForeignKey("sachmaSach")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("donHang");
+
+                    b.Navigation("sach");
                 });
 
             modelBuilder.Entity("BOOK_WEB.Models.DonHang", b =>
@@ -478,6 +458,17 @@ namespace BOOK_WEB.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("trangThaiDonHang");
+                });
+
+            modelBuilder.Entity("BOOK_WEB.Models.Sach", b =>
+                {
+                    b.HasOne("BOOK_WEB.Models.TheLoai", "theLoai")
+                        .WithMany("sachs")
+                        .HasForeignKey("maTheLoai")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("theLoai");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -531,13 +522,6 @@ namespace BOOK_WEB.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("BOOK_WEB.Models.Book", b =>
-                {
-                    b.Navigation("chiTietGioHangs");
-
-                    b.Navigation("chitietDonHang");
-                });
-
             modelBuilder.Entity("BOOK_WEB.Models.DonHang", b =>
                 {
                     b.Navigation("chitietDonHangs");
@@ -548,9 +532,16 @@ namespace BOOK_WEB.Data.Migrations
                     b.Navigation("chiTietGioHangs");
                 });
 
+            modelBuilder.Entity("BOOK_WEB.Models.Sach", b =>
+                {
+                    b.Navigation("chiTietGioHangs");
+
+                    b.Navigation("chitietDonHangs");
+                });
+
             modelBuilder.Entity("BOOK_WEB.Models.TheLoai", b =>
                 {
-                    b.Navigation("books");
+                    b.Navigation("sachs");
                 });
 #pragma warning restore 612, 618
         }

@@ -10,7 +10,7 @@ namespace BOOK_WEB.Models
         public int maTheLoai { get; set; }
         [MaxLength(50)]
         public string? tenTheLoai {  set; get; }
-        public List<Book> books { get; set; }
+        public List<Sach> sachs { get; set; }
         
     }
 }

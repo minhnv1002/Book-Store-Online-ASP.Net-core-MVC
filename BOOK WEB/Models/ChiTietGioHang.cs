@@ -17,6 +17,6 @@ namespace BOOK_WEB.Models
         public double donGia {  get; set; }
         public int maSach {  get; set; }
 
-        public Book Book { get; set; }
+        public Sach sach { get; set; }
     }
 }
