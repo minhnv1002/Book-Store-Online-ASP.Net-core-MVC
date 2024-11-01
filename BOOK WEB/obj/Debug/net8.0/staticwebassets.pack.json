@@ -17,6 +17,38 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\Project\\BOOK WEB\\BOOK WEB\\wwwroot\\image\\hinh1.jpg",
+      "PackagePath": "staticwebassets\\image\\hinh1.jpg"
+    },
+    {
+      "Id": "D:\\Project\\BOOK WEB\\BOOK WEB\\wwwroot\\image\\hinh2.jpg",
+      "PackagePath": "staticwebassets\\image\\hinh2.jpg"
+    },
+    {
+      "Id": "D:\\Project\\BOOK WEB\\BOOK WEB\\wwwroot\\image\\hinh4.jpg",
+      "PackagePath": "staticwebassets\\image\\hinh4.jpg"
+    },
+    {
+      "Id": "D:\\Project\\BOOK WEB\\BOOK WEB\\wwwroot\\image\\hinh5_.jpg",
+      "PackagePath": "staticwebassets\\image\\hinh5_.jpg"
+    },
+    {
+      "Id": "D:\\Project\\BOOK WEB\\BOOK WEB\\wwwroot\\image\\hinh6.jpg",
+      "PackagePath": "staticwebassets\\image\\hinh6.jpg"
+    },
+    {
+      "Id": "D:\\Project\\BOOK WEB\\BOOK WEB\\wwwroot\\image\\hinh7.jpg",
+      "PackagePath": "staticwebassets\\image\\hinh7.jpg"
+    },
+    {
+      "Id": "D:\\Project\\BOOK WEB\\BOOK WEB\\wwwroot\\image\\hinh8.jpg",
+      "PackagePath": "staticwebassets\\image\\hinh8.jpg"
+    },
+    {
+      "Id": "D:\\Project\\BOOK WEB\\BOOK WEB\\wwwroot\\image\\hinhminh.png",
+      "PackagePath": "staticwebassets\\image\\hinhminh.png"
+    },
+    {
       "Id": "D:\\Project\\BOOK WEB\\BOOK WEB\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
